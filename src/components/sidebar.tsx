@@ -37,7 +37,7 @@ export default function Sidebar() {
           alt="David Nguyen"
           width={250}
           height={250}
-          className="flex h-32 w-32 flex-shrink-0 rounded-full object-cover object-[center_top] ring-1 ring-gray-950 dark:ring-gray-600 sm:h-36 sm:w-36 md:h-60 md:w-60 lg:h-72 lg:w-72"
+          className="flex h-32 w-32 flex-shrink-0 rounded-full object-cover object-[center_top] shadow-md drop-shadow sm:h-36 sm:w-36 md:h-60 md:w-60 lg:h-72 lg:w-72"
         />
 
         <div className="flex flex-col">

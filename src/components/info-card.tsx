@@ -9,7 +9,7 @@ export default function InfoCard({
 }) {
   return (
     <section
-      className="w-full rounded-lg border p-4 dark:border-gray-700"
+      className="w-full rounded-lg border p-4 shadow-sm dark:border-gray-700"
       id={id}
     >
       <span className="text-xs font-medium">{title}</span>
