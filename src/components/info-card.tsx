@@ -8,9 +8,12 @@ export default function InfoCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border w-full rounded-lg p-4" id={id}>
+    <section
+      className="border w-full rounded-lg p-4 dark:border-gray-700"
+      id={id}
+    >
       <span className="text-xs font-medium">{title}</span>
-      <div className="mt-4 text-gray-700">{children}</div>
+      <div className="mt-4 text-gray-700 dark:text-gray-50">{children}</div>
     </section>
   );
 }

@@ -22,13 +22,13 @@ export const ProjectCard = ({ data }: { data: ProjectData }) => {
 
 export const ProjectCardMini = ({ data }: { data: ProjectData }) => {
   return (
-    <article className="border rounded-md p-4 flex items-center justify-between group">
+    <article className="border rounded-md p-4 flex items-center justify-between group dark:border-gray-600">
       <div>
         <div>{data.title}</div>
         <div className="text-xs leading-6">{data.subtitle}</div>
         <div className="flex text-xs gap-x-2">
           {data.technologies.map((tech, i) => (
-            <div key={tech} className="text-gray-700">
+            <div key={tech} className="text-gray-700 dark:text-gray-300">
               <span className="mr-2">{tech}</span>
               {i < data.technologies.length - 1 && <span>&#8226;</span>}
             </div>

@@ -37,7 +37,7 @@ export default function Sidebar() {
           alt="David Nguyen"
           width={250}
           height={250}
-          className="ring-1 ring-gray-950 rounded-full w-36 h-36 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover object-[center_top]"
+          className="ring-1 ring-gray-950 dark:ring-gray-600 rounded-full w-36 h-36 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover object-[center_top]"
         />
 
         <div className="flex flex-col">
@@ -52,12 +52,12 @@ export default function Sidebar() {
       <div className="mt-6 md:mt-4 flex flex-col gap-y-1">
         {socials.map((social) => (
           <div key={social.name} className="flex items-center gap-x-2.5">
-            <social.icon className="w-4 h-4 text-gray-700" />
+            <social.icon className="w-4 h-4 text-gray-700 dark:text-gray-300" />
             <a
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline hover:text-sky-600 text-gray-700"
+              className="hover:underline hover:text-sky-600 dark:hover:text-sky-400 text-gray-700 dark:text-gray-300"
             >
               {social.name}
             </a>
