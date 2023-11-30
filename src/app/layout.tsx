@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-white text-black min-h-screen h-full">
       <body className={GeistSans.className}>
-        <Header />
+        <Header activeTab={params.tab} />
         <div className="px-4 mt-12 max-w-7xl mx-auto grid grid-cols-11 gap-2">
           <Sidebar />
           {children}
