@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import Nav from "./nav";
 import ThemeController from "./theme-controller";
+import MenuIcon from "@/icons/menu";
 
 export default function Header() {
   return (
@@ -20,7 +21,12 @@ export default function Header() {
           </span>
         </div>
 
-        <ThemeController />
+        <div className="flex items-center justify-center gap-x-4">
+          <ThemeController />
+          <button type="button" className="outline-none">
+            <MenuIcon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+          </button>
+        </div>
       </div>
       <Nav />
     </header>

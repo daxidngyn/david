@@ -11,7 +11,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-react-aria-components"),
+  ],
   darkMode: "class",
 };
 export default config;
