@@ -30,22 +30,22 @@ export default function Nav() {
   };
 
   return (
-    <nav className="mt-4 space-x-3 md:space-x-4 flex items-center">
+    <nav className="mt-4 flex items-center space-x-3 md:space-x-4">
       {navigation.map((path) => (
         <Link
           href={path.href}
           key={path.name}
-          className={`flex items-center gap-x-1.5 relative px-1 md:px-2 justify-center ${
+          className={`relative flex items-center justify-center gap-x-1.5 px-1 md:px-2 ${
             isCurrentPath(path.href)
-              ? "text-black dark:text-white font-medium"
-              : "text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-950"
+              ? "font-medium text-black dark:text-white"
+              : "text-gray-700 hover:text-gray-950 dark:text-gray-300 dark:hover:text-gray-100"
           }`}
         >
-          <path.icon className="w-4 h-4" />
+          <path.icon className="h-4 w-4" />
           <span className="text-sm">{path.name}</span>
 
           {isCurrentPath(path.href) && (
-            <div className="absolute w-full -bottom-[13px] bg-sky-500 dark:bg-sky-400 h-0.5" />
+            <div className="absolute -bottom-[13px] h-0.5 w-full bg-sky-500 dark:bg-sky-400" />
           )}
         </Link>
       ))}
@@ -54,9 +54,9 @@ export default function Nav() {
         href="https://docs.google.com/document/d/1xL3zLZNoR7UqMyGOlppvSfMhnUUV3q_hgk9gP90edw8/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-x-1.5 px-1  text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-950"
+        className="flex items-center gap-x-1.5 px-1  text-gray-700 hover:text-gray-950 dark:text-gray-300 dark:hover:text-gray-100"
       >
-        <ResumeIcon className="w-4 h-4" />
+        <ResumeIcon className="h-4 w-4" />
         <span className="text-sm">Resume</span>
       </a>
     </nav>

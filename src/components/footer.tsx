@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="px-4 pt-16 pb-6 text-xs text-gray-600 dark:text-gray-300 text-center">
+    <footer className="px-4 pb-6 pt-16 text-center text-xs text-gray-600 dark:text-gray-300">
       <div>
         Created by{" "}
         <span className="text-sky-600 dark:text-sky-400">David Nguyen</span>.
@@ -16,7 +16,7 @@ export default function Footer() {
           href="https://github.com/daxidngyn/portfolio"
           target="_blank"
           rel="noreferrer"
-          className="cursor-pointer dark:text-sky-400 text-sky-600 hover:underline"
+          className="cursor-pointer text-sky-600 hover:underline dark:text-sky-400"
         >
           here
         </a>

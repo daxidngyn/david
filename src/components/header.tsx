@@ -5,7 +5,7 @@ import ThemeController from "./theme-controller";
 
 export default function Header() {
   return (
-    <header className="bg-gray-100 dark:bg-gray-950 px-4 pt-4 pb-3 border-b dark:border-gray-800">
+    <header className="border-b bg-gray-100 px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-gray-950">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-4">
           <Image

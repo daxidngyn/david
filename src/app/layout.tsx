@@ -17,14 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="min-h-screen h-full">
+    <html lang="en" className="h-full min-h-screen">
       <body className={GeistSans.className}>
         <ThemeProvider>
           <div className="bg-white text-black dark:bg-[#0d121d] dark:text-white">
             <Header />
-            <div className="px-4 md:px-8 mt-10 md:mt-12 max-w-7xl mx-auto flex flex-col md:flex-row gap-4">
+            <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-4 px-4 md:mt-12 md:flex-row md:px-8">
               <Sidebar />
-              <div className="mt-8 md:mt-0 flex-1 pb-6">{children}</div>
+              <div className="mt-8 flex-1 pb-6 md:mt-0">{children}</div>
             </div>
             <Footer />
           </div>
