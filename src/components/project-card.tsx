@@ -36,7 +36,7 @@ export const ProjectCard = ({ data }: { data: ProjectData }) => {
 
         <div className="mt-4 lg:mt-6">
           <span className="leading-6">{data.subtitle}</span>
-          <p className="leading-6 text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
             {data.content}
           </p>
         </div>
@@ -45,9 +45,9 @@ export const ProjectCard = ({ data }: { data: ProjectData }) => {
           href={data.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-4 flex w-fit items-center rounded-full bg-gray-800 px-4 py-2 text-gray-200"
+          className="group mt-4 flex w-fit items-center rounded-full bg-gray-800 px-4 py-2 text-gray-100 dark:text-gray-200"
         >
-          <span className="mr-0.5 text-sm">Discover</span>
+          <span className="mr-0.5 text-sm group-hover:underline">Discover</span>
           <ArrowRightIcon className="h-4 w-4 transition duration-300 ease-in-out group-hover:translate-x-1" />
         </a>
       </div>

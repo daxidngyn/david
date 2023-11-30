@@ -1,3 +1,5 @@
+import { GeistMono } from "geist/font/mono";
+
 import InfoCard from "@/components/info-card";
 import projects from "@/../projects.json";
 import { ProjectCard, ProjectCardMini } from "@/components/project-card";
@@ -23,7 +25,7 @@ const technologies = [
 
 export default function ProjectsPage() {
   return (
-    <main className="space-y-8">
+    <main className={`${GeistMono.className} space-y-8 md:space-y-12`}>
       <InfoCard id="projects/readme" title="davidnguyen / projects / README.md">
         <h1 className="text-3xl font-bold md:text-4xl">Projects</h1>
         <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 md:text-xl">

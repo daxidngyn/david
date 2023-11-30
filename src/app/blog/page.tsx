@@ -1,12 +1,14 @@
-import InfoCard from "@/components/info-card";
-import { getBlogPosts } from "@/lib/blog";
+import { GeistMono } from "geist/font/mono";
 import Link from "next/link";
+
+import { getBlogPosts } from "@/lib/blog";
+import InfoCard from "@/components/info-card";
 
 export default function BlogPage() {
   const blogPosts = getBlogPosts();
 
   return (
-    <main>
+    <main className={`${GeistMono.className} space-y-8 md:space-y-12`}>
       <InfoCard id="blog/readme" title="davidnguyen / blog / README.md">
         <h1 className="text-3xl font-bold md:text-4xl">Blog</h1>
         <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 md:text-xl">
