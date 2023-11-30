@@ -10,7 +10,7 @@ export default function HomePage() {
     <main className={`${GeistMono.className} space-y-12`}>
       <InfoCard id="readme" title="davidnguyen / README.md">
         <span className="relative text-lg font-medium text-sky-500 dark:text-sky-400 md:text-xl">
-          Hey there! I'm
+          Hey there! I{"'"}m
         </span>
         <h1 className="font-bold text-3xl md:text-4xl">David Nguyen.</h1>
 
@@ -29,14 +29,14 @@ export default function HomePage() {
 
       <InfoCard id="about-me" title="about me">
         <p className="dark:text-gray-300 text-gray-700">
-          I'm David Nguyen, a current senior pursuing Computer Science at UC
+          I{"'"}m David Nguyen, a current senior pursuing Computer Science at UC
           Santa Cruz.
         </p>
         <p className="mt-4 text-gray-700 dark:text-gray-300">
-          I'm a self-taught developer that specializes in fullstack web
+          I{"'"}m a self-taught developer that specializes in fullstack web
           development. I love to fuel my innovation by exploring creative ideas
-          and executing them. I've always been fascinated with the idea of how
-          things worked — which paired with my love of computers and digital
+          and executing them. I{"'"}ve always been fascinated with the idea of
+          how things worked — which paired with my love of computers and digital
           media, led me to where I am today and kickstarted my foray into
           software development.
         </p>
