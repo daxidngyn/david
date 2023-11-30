@@ -30,14 +30,14 @@ const socials = [
 
 export default function Sidebar() {
   return (
-    <div className="col-span-2 md:w-72 lg:w-80">
+    <div className="md:w-72 lg:w-80">
       <div className="flex flex-row md:flex-col gap-x-4 md:gap-x-0 items-center md:items-start">
         <Image
           src="/me.jpg"
           alt="David Nguyen"
           width={250}
           height={250}
-          className="ring-1 ring-gray-950 flex flex-shrink-0 dark:ring-gray-600 rounded-full w-36 h-36 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover object-[center_top]"
+          className="ring-1 ring-gray-950 flex flex-shrink-0 dark:ring-gray-600 rounded-full w-32 h-32 sm:w-36 sm:h-36 md:w-60 md:h-60 lg:w-72 lg:h-72 object-cover object-[center_top]"
         />
 
         <div className="flex flex-col">

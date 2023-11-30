@@ -21,9 +21,9 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="bg-white text-black dark:bg-[#0d121d] dark:text-white">
             <Header />
-            <div className="px-4 md:px-8 mt-12 max-w-7xl mx-auto md:grid grid-cols-7 gap-4 grid-flow-col">
+            <div className="px-4 md:px-8 mt-10 md:mt-12 max-w-7xl mx-auto flex flex-col md:flex-row gap-4">
               <Sidebar />
-              <div className="mt-8 md:mt-0 col-span-5 pb-6">{children}</div>
+              <div className="mt-8 md:mt-0 flex-1 pb-6">{children}</div>
             </div>
           </div>
         </ThemeProvider>

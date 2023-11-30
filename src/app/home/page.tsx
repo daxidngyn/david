@@ -14,7 +14,7 @@ export default function HomePage() {
         </span>
         <h1 className="font-bold text-3xl md:text-4xl">David Nguyen.</h1>
 
-        <p className="text-lg font-medium md:text-xl mt-4">
+        <p className="text-lg font-medium md:text-xl mt-4 text-gray-950 dark:text-white">
           Software Engineer. Fullstack Developer.{" "}
           <span className="text-gray-700 dark:text-gray-300">
             An avid developer consistently seeking to expand my knowledge in the
