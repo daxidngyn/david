@@ -37,15 +37,15 @@ export default function Sidebar() {
           alt="David Nguyen"
           width={250}
           height={250}
-          className="ring-1 ring-gray-950 dark:ring-gray-600 rounded-full w-36 h-36 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover object-[center_top]"
+          className="ring-1 ring-gray-950 flex flex-shrink-0 dark:ring-gray-600 rounded-full w-36 h-36 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover object-[center_top]"
         />
 
         <div className="flex flex-col">
           <span className="font-semibold text-2xl md:mt-6">David Nguyen</span>
-          <span className="leading-6 mt-2">
+          <span className="leading-6 mt-2 text-base">
             Software Engineer. Fullstack Developer.
           </span>
-          <span className="leading-6">CS @ UCSC</span>
+          <span className="leading-6 text-base">CS @ UCSC</span>
         </div>
       </div>
 

@@ -7,7 +7,7 @@ import { ProjectCardMini } from "@/components/project-card";
 
 export default function HomePage() {
   return (
-    <main className={`${GeistMono.className} space-y-12`}>
+    <main className={`${GeistMono.className} space-y-8 md:space-y-12`}>
       <InfoCard id="readme" title="davidnguyen / README.md">
         <span className="relative text-lg font-medium text-sky-500 dark:text-sky-400 md:text-xl">
           Hey there! I{"'"}m
