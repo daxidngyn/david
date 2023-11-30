@@ -1,0 +1,436 @@
+---
+title: "Optimizing SEO with Next.js 13's Metadata API"
+publishedAt: "2023-05-20"
+summary: "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API."
+---
+
+In today's digital landscape, search engine optimization (SEO) plays a critical role for those seeking to maximize their online visibility. With millions of websites competing for attention, it's crucial to leverage technologies that enable robust SEO strategies.
+
+Enter **Next.js**, a popular React-based framework used for building **fast, scalable, and SEO-friendly web applications**. With the release of [version 13.2](https://nextjs.org/blog/next-13-2) and the new [Metadata API](https://nextjs.org/docs/app/api-reference/file-conventions/metadata), generating dynamic metadata has never been easier. In this article, we explore what exactly is SEO, and how Next.js 13's Metadata API opens up new possibilities for ultimately driving organic traffic to a site.
+
+## What is SEO?
+
+**Search engine optimization** refers to the set of techniques aimed at enhancing a website's visibility on search engine results pages. In other words, the more optimized the SEO, the higher it will rank on search results.
+
+SEO involves various techniques to improve a website's visibility and ranking on search engines, attract organic traffic, and ultimately increase conversion. One key aspect of improving SEO is optimizing **metadata**, which provides valuable information to search engine crawlers about a website. This is typically done through `meta` tags residing within HTML `<head>` elements, which may look like this in HTML:
+
+```html
+<head>
+  <title>David Nguyen | Portfolio</title>
+  <meta
+    name="description"
+    content="Software engineer and fullstack developer."
+    key="desc"
+  />
+</head>
+```
+
+If you're interested in learning more, Next.js has a free SEO course available on their site! Check it out [here](https://nextjs.org/learn/seo/introduction-to-seo).
+
+## SEO in Next.js
+
+The release of **Next.js 13.2** and it's new **Metadata API** has made generating dynamic metadata and optimizing SEO effortless. Before diving into the new Metadata API however, let's examine how metadata was handled prior to Next.js 13.2.
+
+### Using `next/head`
+
+Next.js has provided a simple API for modifying metadata (e.g. meta & link tags) through the built-in `next/head` [component](https://nextjs.org/docs/pages/api-reference/components/head), which enabled appending elements to the HTML head element. This allowed users to define metadata in different routes, enabling SEO management. However, there was no efficient way to generate dynamic metadata for an article such as this without doing so manually.
+
+With the introduction of Next.js 13.2, the new Metadata API has been designed to enhance upon how we optimize for search engine crawlers.
+
+### The New Way
+
+The Metadata API is available in Next.js versions 13.2 and above for the [App Router](https://nextjs.org/docs/app) (`app` directory), which was introduced with the release of [Next.js 13](https://nextjs.org/blog/next-13). This replaces the previous `head.js` special file and is **not** available for the `pages` directory.
+
+This API is **simple, composable, and designed to be compatible with streaming server rendering**. You can set common metadata attributes in your root layout for the entire application, and compose and merge metadata objects together for other routes in your application. One of the largest benefits of the Metadata API is support for dynamic metadata as opposed to only static, which we will now discuss on how to implement.
+
+## Using the Metadata API
+
+Now that we've covered the basics of the Metadata API, let's dive deeper on how to add metadata to your Next.js application. We can do so by adding static or dynamically generated special files to route segments. With both of these options, Next.js automatically generates the corresponding `<head>` elements for your pages.
+
+### Static Metadata
+
+To define static metadata, export a `Metadata` object from a `layout.js` file or static `page.js` file, like so:
+
+```jsx
+// app/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "...",
+  description: "...",
+  openGraph: {},
+  // ...
+};
+
+export default function Page() {}
+```
+
+This object allows us to set standard `metadata` properties such as `title` or `description` (more on these later!).
+
+Note that the `Metadata` type we are using does not need to be declared if we are using the [built-in Next.js typescript plugin](https://nextjs.org/docs/app/building-your-application/configuring/typescript), which is included when running `npx create-next-app`. If you don't have this enabled in your Next.js projects, I highly recommend doing so!
+
+### Dynamic Metadata
+
+Dynamic metadata is dependant on **dynamic information**, such as the current route parameters, external data, or `metadata` in parent segments. To generate dynamic metadata, we can export a `generateMetadata` function to fetch metadata that requires dynamic values, like so:
+
+```jsx
+// app/products/[id]/page.tsx
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { id: string },
+  searchParams: { [key: string]: string | string[] | undefined },
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent?: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.id;
+
+  const product = await fetch(`https://.../${id}`).then((res) => res.json());
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: product.title,
+    openGraph: {
+      images: ["/some-specific-page-image.jpg", ...previousImages],
+    },
+  };
+}
+
+export default function ProductPage({ params, searchParams }: Props) {}
+```
+
+The `generateMetadata` function is only supported in [Server Components](https://nextjs.org/docs/getting-started/react-essentials#server-components), which means that Next.js will wait for data fetching inside `generateMetadata` to complete before streaming UI to the client. This guarantees that the first part of a streamed response includes the corresponding `<head>` tags that were returned within the function.
+
+In this example, we are fetching metadata for a specific product on our site. Observe that the `generateMetadata` function accepts route parameters (an `id` in this case to use in fetching data) and an optional parent metadata object. When rendering a route, Next.js will [automatically deduplicate `fetch` requests](https://nextjs.org/docs/app/building-your-application/data-fetching#automatic-fetch-request-deduping) for the same data across `generateMetadata`, `generateStaticParams`, Layouts, Pages, and Server Components.
+
+#### Dynamic Image Generation
+
+One of the key selling points of the Metadata API is the ability to **generate dynamic images using JSX and CSS through the `ImageResponse` constructor**. This makes creating social media images such as OG (Open Graph) images or Twitter cards effortless.
+If you havn't heard of these terms, don't worry! We'll go in depth on what these mean when we discuss `meta` tags, so stick around.
+
+This can be implemented using the new [Next.js Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/router-handlers), which allows you to create request handlers for any given route and replaces API routes inside the `pages` directory.
+
+Note that route handlers **cannot** be in the same route segment level as `page.tsx`. Therefore, I would recommend you create an `api` folder within `app` to hold all of your route handlers.
+
+With that out of the way, let's see how we can implement dynamic image generation! To do so, we can import `ImageResponse` from `next/server`:
+
+```jsx
+// app/api/og/route.tsx
+import { ImageResponse } from "next/server";
+import { NextRequest } from "next/server";
+
+export const runtime = "edge";
+
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+  const title = searchParams.get("title");
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          // more styles here...
+          backgroundImage: "url(https://davidhtnguyen.com/og-bg.png)",
+        }}
+      >
+        {title}
+      </div>
+    ),
+    {
+      width: 1920,
+      height: 1080,
+    }
+  );
+}
+```
+
+Now that we've created our Route Handler to generate the OG image, all that's left to do is to call this within `generateMetadata`! Here's an example of how I'm doing so for this article:
+
+```jsx
+// app/blog/[slug]/page.tsx
+export async function generateMetadata({ params }): Promise<Metadata> {
+  // locate the article by the slug
+  const post = allBlogs.find((post) => post.slug === params.slug);
+  if (!post) {
+    return;
+  }
+
+  // parse data
+  const {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    slug,
+  } = post;
+
+  // calling the route handler we just made and passing in the title of the post
+  const ogImage = `https://davidhtnguyen.com/api/og?title${title}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      // ...
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    // ...
+  };
+}
+```
+
+Observe how we are calling our Route Handler within the `generateMetadata` function above. We pass in the title of this article, which is then parsed by the Route Handler and rendered on top of the background image that was defined in the Route Handler.
+
+The [background image](https://davidhtnguyen.com/og-bg.png) I am using looks like this:
+
+<Image
+  alt={`The OG background image I'm using`}
+  src={`/blog/nextjs13-seo/og-bg.png`}
+  width={1920 / 3}
+  height={1080 / 3}
+/>
+
+And the resulting [dynamically generated OG image](https://davidhtnguyen.com/api/og?title=Optimizing%20SEO%20with%20Next.js%2013%27s%20Metadata%20API) looks like this:
+
+<Image
+  alt={`The resulting dynamically generated OG image`}
+  src={`/blog/nextjs13-seo/generated-og.png`}
+  width={1920 / 3}
+  height={1080 / 3}
+/>
+
+`ImageResponse` supports common CSS properties such as custom fonts, nested images, text wrapping, in addition to the ones above. Play around with a few examples from the [Vercel OG Playground](https://og-playground.vercel.app/) to learn more and gain some inspiration, or share this article (please) on social media to witness it in action!
+
+This is everything that you need to know in order to get started with using the new **Metadata API** in your applications! As always, refer to the [Next.js Metadata API documentation](https://nextjs.org/docs/app/building-your-application/optimizing/metadata) for more information.
+
+## More on SEO
+
+If you were unfamiliar with many of the terms we've discussed in this article so far, this is the section for you.
+In this section, you'll learn a bit more on **how search engines crawl websites** in order to index and rank them, and what you can do as a developer to **increase your website's visibility**.
+
+### Webcrawlers
+
+Before diving deeper into metadata fields, let's take a look at how search engines analyze websites to index them within search results.
+
+In order for your website to appear within search results, search engines (e.g. Google, DuckDuckGo) use **webcrawlers** to analyze the website and discover other pages.
+Webcrawlers are a type of bot that emulates users and navigates through links found on the website to index different pages. This allows for not only the main URL of your site to be discovered within search results, but other pages as well.
+
+For example, searching "Apple" on Google provides us with a bunch of other pages in addition to Apple's main homepage:
+
+<Image
+  alt={`Search result for "Apple"`}
+  src={`/blog/nextjs13-seo/apple-search.png`}
+  width={1920 / 3}
+  height={1080 / 3}
+/>
+
+#### `robots.txt` File
+
+A `robots.txt` file tells search engine crawlers which pages the crawler can or can't request from your site. This file is a web standard file that most bots consume before requesting anything from a specific domain.
+You might want to protect certain areas of your website from being crawled and indexed, say, an admin dashboard or private API routes.
+`robots.txt` files must be served at the root of each host. When using the Next.js `app` directory, the `robots.txt` file will live within the root of `app`.
+
+A standard `robots.txt` file may look like so:
+
+```txt
+//robots.txt
+
+# Block all crawlers for /accounts
+User-agent: *
+Disallow: /accounts
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+```
+
+For my portfolio site, I have the following `robots.ts` file:
+
+```jsx
+// app/robots.ts
+
+export default function robots() {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
+    sitemap: "https://davidhtnguyen.com/sitemap.xml",
+    host: "https://davidhtnguyen.com",
+  };
+}
+```
+
+Learn more about how Next.js handles `robots.txt` files [here](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots). In this example, I am not blocking anything from my website, and allowing webcrawlers to index everything.
+
+#### XML Sitemaps
+
+A sitemap is a file that specifies information about the pages, videos, and other files on your site, and the relationships between them. Search engines like Google read this file to more intelligently crawl your site.
+Sitemaps indicate the URLs that belong to your website and when they update so that Google can easily detect new content and crawl your website more efficiently.
+
+While sitemaps are not mandatory for great search engine performance, they can facilitate crawling and indexing to bots and hence your content will be picked up faster and rank accordingly.
+It's strongly recommended to use sitemaps and make them dynamic as new content is populated across your website.
+
+For my portfilio site, I have the following `sitemap.ts` file, located in the same location as my `robots.ts` file (in the `app` directory root):
+
+```jsx
+// app/sitemap.ts
+
+export default async function sitemap() {
+  const blogs = allBlogs.map((post) => ({
+    url: `https://davidhtnguyen.com/blog/${post.slug}`,
+    lastModified: post.publishedAt,
+  }));
+
+  const routes = ["", "/projects", "/blog"].map((route) => ({
+    url: `https://davidhtnguyen.com${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+
+  return [...routes, ...blogs];
+}
+```
+
+This returns all of the available sites within my website. Notice how I've dynamically included all of my published blogs, as well as static pages like the "/projects" page.
+
+The key takeaway from this section is understanding what search engines do in order to crawl and index your site.
+With that out of the way, let's take a closer look at how we can use metadata to provide search engine crawlers with more **specific information on each page of your site**.
+
+## Metadata Fields
+
+While we've explored the new Metadata API, it is crucial to gain a deeper understanding of the various metadata tags and their significance in optimizing SEO.
+By the end of this section, you'll have a better understanding on how to use these tags to optimize the SEO of your application.
+
+Keep in mind that all of the following tags I will be covering should be implemented on each page or route of your application.
+
+#### `title`
+
+The `title` tag specifies the document title of the current page you are on, and is arguably the most important `meta` tag.
+If you look at the tab of this article in your browser, you'll see that it says "Optimizing SEO with Next.js 13's Metadata API". That's the title that I have set.
+
+#### `description`
+
+The `description` tag specifies the document description of the current page you are on.
+The description helps search engines understand the content of the current page, and can be displayed in search results as a snippet.
+
+Here's the same screenshot from earlier to help you better grasp the `title` and `description` tags:
+
+<Image
+  alt={`Search result for "Apple"`}
+  src={`/blog/nextjs13-seo/apple-search.png`}
+  width={1920 / 3}
+  height={1080 / 3}
+/>
+
+On each result, the `title` and `description` tags are being displayed.
+For example, the _iPhone_ product page has "iPhone" as the `title` and "Powerful. Beautiful. Check out the new..." as the `description`.
+
+### Open Graph
+
+Originally created by Facebook, the [Open Graph (OG) protocol](https://ogp.me/) is used by social media platforms to better understand and display your content.
+For example, sharing most articles (such as this one!), will display a title, description, as well as an image, ultimately helping content stand out from the loads of other content being posted on the internet.
+
+<Image
+  alt={`An example of OG metadata`}
+  src={`/blog/nextjs13-seo/og-example.png`}
+  width={1920 / 3}
+  height={1080 / 3}
+/>
+
+There are a few properties that are vital to understand:
+
+#### `og:title` & `og:description`
+
+The `og:title` and `og:description` tags are vital to providing a brief overview of the content you are sharing.
+While these work the same as the standard `title` and `description` tags, it is still a good idea to set them, even if their contents are the same.
+
+#### `og:type`
+
+The open graph protocol has a few variations of the “type” of website it supports. This includes types like website, article, or video.
+
+When setting up your open graph tags, you’ll want to have an idea of which type will make more sense for your website. If your page is focused on a single video, it probably makes sense to use the type “video”.
+Alternatively, if it’s a general website with no specific vertical, you would probably just want to use the type “website”.
+
+For example, my homepage has the `type` set as "website", while this article has the `type` set as "article".
+
+#### `og:image`
+
+Open Graph allows you to include an `image` in your metadata to enhance the visual appeal of your content on social media platforms.
+Recall the **dynamic image generation** section we discussed earlier -- that was for generating a unique `og:image`.
+
+In addition to including images, Open Graph also allows you to specify `audio` or `videos` in your metadata.
+For example, sharing Youtube videos utilizes the `og:video` tag that allows you to play the youtube video straight from the shared link.
+
+#### `og:url`
+
+Lastly, we'll briefly cover the `og:url` property. This specifies the canonical URL of your webpage, and should be the current URL of the page you are on.
+Oftentimes, many websites have duplicates, which makes it difficult for search engine crawlers to identify the preferred version of your content. Setting this tag solves that issue.
+
+### Twitter
+
+Twitter has a different protocol than Open Graph, therefore, we must also set tags specific to Twitter.
+
+Note that in the case where Twitter tags are absent, there is a [fallback mechanism](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup) to use Open Graph tags, if set.
+However, it is still a good idea to do so.
+
+#### `twitter:card`
+
+The `twitter:card` tag specifies the type of card to be created, and can either be `summary`, `photo`, or `video`.
+
+However, I've only seen the value of "summary_large_image" being set on all sites that I've browsed. So you should just stick to that to be safe. :)
+
+The rest of the Twitter Tags work the same way as Open Graph's. See the [full list of Twitter Card Tags here](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup).
+
+## Summary
+
+I hope that you've gained a comprehensive understanding of some of the most important meta tags used to optimize your web application for search engines.
+Now that we've covered these tags, you're well on your way to mastering metadata. Have fun adding these tags to your applications!
+
+Here's what the metadata looks like for this article, as a static version to help with understanding:
+
+```jsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Optimizing SEO with Next.js 13's Metadata API",
+  description:
+    "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API.",
+  openGraph: {
+    title: "Optimizing SEO with Next.js 13's Metadata API",
+    description:
+      "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API.",
+    type: "article",
+    publishedTime: "2023-05-20",
+    url: "https://davidhtnguyen.com/blog/nextjs13-seo",
+    images: [
+      {
+        url: "https://davidhtnguyen.com/api/og?title=Optimizing SEO with Next.js 13's Metadata API",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Optimizing SEO with Next.js 13's Metadata API",
+    description:
+      "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API.",
+    images: [
+      "https://davidhtnguyen.com/api/og?title=Optimizing SEO with Next.js 13's Metadata API",
+    ],
+  },
+};
+```
+
+In conclusion, having a solid understanding of metadata fields and their effect on SEO is crucial for optimizing the SEO and ultimate ranking/visibility of your pages.
+By leveraging the power of **Next.js** and its new **Metadata API**, you can generate both static and dynamic metadata and effortlessly optimize SEO.
+You're now well on your way in creating fast, scalable, and SEO-optimized web applications using Next.js!

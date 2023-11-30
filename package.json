@@ -11,10 +11,12 @@
   "dependencies": {
     "geist": "^1.2.0",
     "next": "14.0.3",
+    "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-aria-components": "1.0.0-rc.0",
     "react-dom": "^18",
+    "sugar-high": "^0.5.5",
     "tailwindcss-react-aria-components": "1.0.0-rc.0"
   },
   "devDependencies": {
