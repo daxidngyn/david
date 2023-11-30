@@ -50,7 +50,7 @@ export default function Nav() {
         href="https://docs.google.com/document/d/1xL3zLZNoR7UqMyGOlppvSfMhnUUV3q_hgk9gP90edw8/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-x-1.5 text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-950"
+        className="flex items-center gap-x-1.5 px-1 md:px-2 text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-950"
       >
         <ResumeIcon className="w-4 h-4" />
         <span className="text-sm">Resume</span>

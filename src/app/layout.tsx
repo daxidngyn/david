@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import ThemeProvider from "./theme-provider";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "David Nguyen",
@@ -25,6 +26,7 @@ export default function RootLayout({
               <Sidebar />
               <div className="mt-8 md:mt-0 flex-1 pb-6">{children}</div>
             </div>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
