@@ -18,9 +18,9 @@ export default function RootLayout({
     <html lang="en" className="bg-white text-black min-h-screen h-full">
       <body className={GeistSans.className}>
         <Header />
-        <div className="px-8 mt-12 max-w-7xl mx-auto grid grid-cols-11 gap-4 grid-flow-col">
+        <div className="px-4 md:px-8 mt-12 max-w-7xl mx-auto md:grid grid-cols-7 gap-4 grid-flow-col">
           <Sidebar />
-          {children}
+          <div className="mt-8 md:mt-0 col-span-5 pb-6">{children}</div>
         </div>
       </body>
     </html>

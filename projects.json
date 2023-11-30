@@ -1,0 +1,65 @@
+[
+  {
+    "title": "VO2",
+    "subtitle": "2022 Class of the Techstars Accelerator",
+    "content": "A blockchain-based platform that allows athletes to tokenize themselves and create fan-athlete economies.",
+    "date": "Oct 2021 - Aug 2022",
+    "images": ["/projects/vo2.png"],
+    "technologies": ["Next.js", "Express", "Web3.js", "MongoDB", "AWS"],
+    "link": "https://vo2.fans"
+  },
+  {
+    "title": "WordleMon",
+    "subtitle": "Gotta Guess 'Em All!",
+    "content": "A Wordle-like game that allows users to guess a daily randomly generated Pokemon.",
+    "date": "Feb 2023",
+    "images": ["/projects/wordlemon.png"],
+    "technologies": ["Next.js"],
+    "link": "https://wordlemon.com"
+  },
+  {
+    "title": "Dapper",
+    "subtitle": "NFT",
+    "content": "Meta-NFT handshake collectible based on Ethereum that provides iconic handshakes from the web available to mint.",
+    "date": "August 2021",
+    "images": ["/projects/dapper.png"],
+    "technologies": ["Next.js", "MongoDB", "Web3/IPFS", "Polygon"],
+    "link": "https://dappr-fs.vercel.app/"
+  },
+  {
+    "title": "SocialSaver",
+    "subtitle": "Cross-platform bookmark aggregator",
+    "content": "Save links as 'bookmarks' with filtering through automatic content tagging and sharing capabilities.",
+    "date": "Sep 2023 - Present",
+    "images": [],
+    "technologies": ["Next.js", "Selenium", "Flask", "PostgreSQL"],
+    "link": "#"
+  },
+  {
+    "title": "Stashed",
+    "subtitle": "",
+    "content": "Manage your inventory of sneakers, apparel, and collectibles.",
+    "date": "June 2021",
+    "images": [],
+    "technologies": ["React", "Electron", "File Handling"],
+    "link": "https://gitfront.io/r/user-8084922/acfc83b6f681319e7c3e54eabe9ead4fa22a6ce5/Stashed/"
+  },
+  {
+    "title": "Elevate",
+    "subtitle": "",
+    "content": "Created to assist with unsystematic virtual college classes.",
+    "date": "March 2020 — Present",
+    "images": [],
+    "technologies": ["React Native", "Expo", "MongoDB/Prisma", "Passport.js"],
+    "link": "https://gitfront.io/r/user-8084922/a741b03593c74670bbae13cb010e4a3f8f8b3b59/Elevate/"
+  },
+  {
+    "title": "Monopoly",
+    "subtitle": "",
+    "content": "Monopoly project for AP Computer Science.",
+    "date": "May 2020",
+    "images": [],
+    "technologies": ["Java", "Swing (GUI)"],
+    "link": "https://github.com/daxidngyn/monopolyAPCS"
+  }
+]
