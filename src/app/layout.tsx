@@ -11,16 +11,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { tab: string };
 }) {
   return (
     <html lang="en" className="bg-white text-black min-h-screen h-full">
       <body className={GeistSans.className}>
-        <Header activeTab={params.tab} />
-        <div className="px-4 mt-12 max-w-7xl mx-auto grid grid-cols-11 gap-2">
+        <Header />
+        <div className="px-8 mt-12 max-w-7xl mx-auto grid grid-cols-11 gap-4 grid-flow-col">
           <Sidebar />
           {children}
         </div>

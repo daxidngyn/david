@@ -40,21 +40,25 @@ export default function Sidebar() {
           className="rounded-full w-80 h-80 object-cover object-[center_top]"
         />
         <div className="flex flex-col mt-4">
-          <span className="font-semibold text-2xl">David Nguyen</span>
-          <span className="text-lg leading-6 mt-4">Bio</span>
+          <span className="font-semibold text-xl">David Nguyen</span>
+          <span className="leading-6 mt-2">
+            Software Engineer. Fullstack Developer.
+          </span>
+          <span className="leading-6">CS @ UCSC</span>
 
           <div className="mt-6 flex flex-col gap-y-1">
             {socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-x-2"
-              >
+              <div key={social.name} className="flex items-center gap-x-2">
                 <social.icon className="w-4 h-4" />
-                <span>{social.name}</span>
-              </a>
+                <a
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:text-sky-600"
+                >
+                  {social.name}
+                </a>
+              </div>
             ))}
           </div>
         </div>
