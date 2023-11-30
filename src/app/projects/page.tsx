@@ -43,9 +43,9 @@ export default function ProjectsPage() {
         </div>
 
         <div className="mt-4 flex flex-wrap gap-x-1 leading-6 lg:gap-x-2">
-          {technologies.map((skill, i) => (
-            <div key={skill} className="text-gray-700 dark:text-gray-300">
-              <span className="mr-1 lg:mr-2">{skill}</span>
+          {technologies.map((technology, i) => (
+            <div key={technology} className="text-gray-700 dark:text-gray-300">
+              <span className="mr-1 lg:mr-2">{technology}</span>
               {i < technologies.length - 1 && <span>&#8226;</span>}
             </div>
           ))}
@@ -54,13 +54,13 @@ export default function ProjectsPage() {
 
       <section className="space-y-8">
         {projects.slice(0, 3).map((project) => (
-          <ProjectCard data={project} />
+          <ProjectCard data={project} key={project.title} />
         ))}
       </section>
 
       <section className="space-y-4">
         {projects.slice(3, projects.length).map((project) => (
-          <ProjectCardMini data={project} />
+          <ProjectCardMini data={project} key={project.title} />
         ))}
       </section>
     </main>
