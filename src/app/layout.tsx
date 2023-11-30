@@ -1,6 +1,9 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
-import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import ThemeProvider from "./theme-provider";
@@ -29,6 +32,8 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
+
+        <Analytics />
       </body>
     </html>
   );
