@@ -1,5 +1,5 @@
-import ArrowRightIcon from "@/icons/arrow-right";
 import Image from "next/image";
+import ArrowRightIcon from "@/icons/arrow-right";
 
 type ProjectData = {
   title: string;

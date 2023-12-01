@@ -1,8 +1,15 @@
 import { GeistMono } from "geist/font/mono";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { getBlogPosts } from "@/lib/blog";
 import InfoCard from "@/components/info-card";
+
+export const metadata: Metadata = {
+  title: "Blog | David Nguyen",
+  description:
+    "A place for me to share things I've learnt or find interesting.",
+};
 
 export default function BlogPage() {
   const blogPosts = getBlogPosts();
@@ -12,8 +19,7 @@ export default function BlogPage() {
       <InfoCard id="blog/readme" title="davidnguyen / blog / README.md">
         <h1 className="text-3xl font-bold md:text-4xl">Blog</h1>
         <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 md:text-xl">
-          A place for me to share the things I{"'"}ve learnt or find
-          interesting.
+          A place for me to share things I{"'"}ve learnt or find interesting.
         </p>
       </InfoCard>
 

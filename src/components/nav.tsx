@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cx } from "@/lib/util";
 
 import BlogIcon from "@/icons/blog";
 import HomeIcon from "@/icons/home";
@@ -30,19 +31,20 @@ export default function Nav() {
   };
 
   return (
-    <nav className="mt-4 flex items-center space-x-3 md:space-x-4">
+    <nav className="mt-4 flex items-center space-x-4">
       {navigation.map((path) => (
         <Link
           href={path.href}
           key={path.name}
-          className={`relative flex items-center justify-center gap-x-1.5 px-1 md:px-2 ${
+          className={cx(
+            "relative flex items-center justify-center gap-x-1.5 px-1 md:px-2",
             isCurrentPath(path.href)
               ? "font-medium text-black dark:text-white"
-              : "text-gray-700 hover:text-gray-950 dark:text-gray-300 dark:hover:text-gray-100"
-          }`}
+              : "text-gray-700 hover:text-gray-950 dark:text-gray-300 dark:hover:text-gray-100",
+          )}
         >
-          <path.icon className="h-4 w-4" />
-          <span className="text-sm">{path.name}</span>
+          <path.icon className="h-3.5 w-3.5 md:h-4 md:w-4" />
+          <span className="text-xs md:text-sm">{path.name}</span>
 
           {isCurrentPath(path.href) && (
             <div className="absolute -bottom-[13px] h-0.5 w-full bg-sky-500 dark:bg-sky-400" />
@@ -56,8 +58,8 @@ export default function Nav() {
         rel="noopener noreferrer"
         className="flex items-center gap-x-1.5 px-1  text-gray-700 hover:text-gray-950 dark:text-gray-300 dark:hover:text-gray-100"
       >
-        <ResumeIcon className="h-4 w-4" />
-        <span className="text-sm">Resume</span>
+        <ResumeIcon className="h-3.5 w-3.5 md:h-4 md:w-4" />
+        <span className="text-xs md:text-sm">Resume</span>
       </a>
     </nav>
   );

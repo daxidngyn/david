@@ -57,7 +57,7 @@ export default function Sidebar() {
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-sky-600 hover:underline dark:text-gray-300 dark:hover:text-sky-400"
+              className="text-sm text-gray-700 hover:text-sky-600 hover:underline dark:text-gray-300 dark:hover:text-sky-400 md:text-base"
             >
               {social.name}
             </a>

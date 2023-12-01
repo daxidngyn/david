@@ -2,15 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { cx } from "@/lib/util";
 
 import {
   Button,
-  Label,
   ListBox,
   ListBoxItem,
   Popover,
   Select,
-  SelectValue,
 } from "react-aria-components";
 import DarkIcon from "@/icons/dark";
 import LightIcon from "@/icons/light";
@@ -59,16 +58,18 @@ export default function ThemeController() {
             className="flex items-center gap-x-2 px-2 py-1 outline-none hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <LightIcon
-              className={`h-4 w-4 ${
+              className={cx(
+                "h-4 w-4",
                 theme === "light"
                   ? "text-sky-600"
-                  : "text-gray-700 dark:text-gray-400"
-              }`}
+                  : "text-gray-700 dark:text-gray-400",
+              )}
             />{" "}
             <span
-              className={`text-sm tracking-wide ${
-                theme === "light" ? "text-sky-600" : ""
-              }`}
+              className={cx(
+                "text-sm tracking-wide",
+                theme === "light" && "text-sky-600",
+              )}
             >
               Light
             </span>
@@ -79,16 +80,18 @@ export default function ThemeController() {
             className="flex items-center gap-x-2 px-2 py-1 outline-none hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <DarkIcon
-              className={`h-4 w-4 ${
+              className={cx(
+                "h-4 w-4",
                 theme === "dark"
                   ? "text-sky-400"
-                  : "text-gray-700 dark:text-gray-400"
-              }`}
+                  : "text-gray-700 dark:text-gray-400",
+              )}
             />{" "}
             <span
-              className={`text-sm tracking-wide ${
-                theme === "dark" ? "text-sky-400" : ""
-              }`}
+              className={cx(
+                "text-sm tracking-wide",
+                theme === "dark" && "text-sky-600",
+              )}
             >
               Dark
             </span>
@@ -99,16 +102,18 @@ export default function ThemeController() {
             className="flex items-center gap-x-2 px-2 py-1 outline-none hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <SystemIcon
-              className={`h-4 w-4 ${
+              className={cx(
+                "h-4 w-4",
                 theme === "system"
-                  ? "text-sky-400"
-                  : "text-gray-700 dark:text-gray-400"
-              }`}
+                  ? "text-sky-500"
+                  : "text-gray-700 dark:text-gray-400",
+              )}
             />{" "}
             <span
-              className={`text-sm tracking-wide ${
-                theme === "system" ? "text-sky-400" : ""
-              }`}
+              className={cx(
+                "text-sm tracking-wide",
+                theme === "system" && "text-sky-500",
+              )}
             >
               System
             </span>

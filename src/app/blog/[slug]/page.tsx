@@ -16,8 +16,8 @@ export async function generateMetadata({
     image,
   } = post.metadata;
   const ogImage = image
-    ? `https://davidn.com${image}`
-    : `https://davidn.com/api/og?title=${title}`;
+    ? `https://davidngn.com${image}`
+    : `https://davidngn.com/api/og?title=${title}`;
 
   return {
     title,
@@ -27,7 +27,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https://davidn.com/blog/${post.slug}`,
+      url: `https://davidngn.com/blog/${post.slug}`,
       images: [
         {
           url: ogImage,
