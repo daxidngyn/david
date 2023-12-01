@@ -10,8 +10,40 @@ import ThemeProvider from "./theme-provider";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "David Nguyen",
+  metadataBase: new URL("https://davidngn.com"),
+  title: { default: "David Nguyen", template: "%s | David Nguyen" },
   description: "Software engineer. Fullstack developer.",
+  openGraph: {
+    title: "David Nguyen",
+    description: "Software engineer. Fullstack developer.",
+    url: "https://davidngn.com",
+    siteName: "David Nguyen",
+    images: {
+      url: "https://davidngn.com/og.png",
+      width: 1920,
+      height: 1080,
+    },
+    locale: "en-US",
+    type: "website",
+  },
+  twitter: {
+    title: "David Nguyen",
+    card: "summary_large_image",
+  },
+  icons: {
+    shortcut: "/favicon.ico",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

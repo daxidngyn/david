@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 
 import InfoCard from "@/components/info-card";
@@ -22,6 +23,12 @@ const technologies = [
   "Flask",
   "AWS",
 ];
+
+export const metadata: Metadata = {
+  title: "Projects | David Nguyen",
+  description:
+    "Projects that I've worked on, many of which I'm still developing or have published.",
+};
 
 export default function ProjectsPage() {
   return (

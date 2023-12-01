@@ -1,20 +1,27 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ["./src/**/*.{ts,tsx}", "./content/**/*.mdx"],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      typography: {
+        quoteless: {
+          css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
+          },
+        },
       },
     },
+  },
+  darkMode: "class",
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [
     require("@tailwindcss/typography"),
     require("tailwindcss-react-aria-components"),
   ],
-  darkMode: "class",
 };
+
 export default config;

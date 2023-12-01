@@ -17,7 +17,7 @@ export default function BlogPage() {
         </p>
       </InfoCard>
 
-      <section className="mt-8">
+      <section className="mt-8 space-y-4">
         {blogPosts
           .sort((a, b) => {
             if (
@@ -61,11 +61,13 @@ const BlogCard = ({
       >
         <div className="flex w-full flex-col">
           <p className="text-lg font-medium md:text-xl">{metadata.title}</p>
-          <span className="text-sm leading-6 text-gray-700 dark:text-gray-300">
+          <span className="text-xs leading-6 text-gray-700 dark:text-gray-300 md:text-sm">
             {metadata.publishedAt}
           </span>
 
-          <p className="mt-2 dark:text-gray-50">{metadata.summary}</p>
+          <p className="mt-2 text-sm dark:text-gray-50 md:text-base">
+            {metadata.summary}
+          </p>
         </div>
       </Link>
     </article>
