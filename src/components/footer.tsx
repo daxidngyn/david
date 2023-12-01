@@ -13,7 +13,7 @@ export default function Footer() {
         <span className="text-sky-600 dark:text-sky-400">TailwindCSS</span>.
         Check out the code{" "}
         <a
-          href="https://github.com/daxidngyn/portfolio"
+          href="https://github.com/daxidngyn/david"
           target="_blank"
           rel="noreferrer"
           className="cursor-pointer text-sky-600 hover:underline dark:text-sky-400"

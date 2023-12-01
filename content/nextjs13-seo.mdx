@@ -136,7 +136,7 @@ export async function GET(req: NextRequest) {
           width: "100%",
           display: "flex",
           // more styles here...
-          backgroundImage: "url(https://davidhtnguyen.com/og-bg.png)",
+          backgroundImage: "url(https://davidngn.com/og-bg.png)",
         }}
       >
         {title}
@@ -170,7 +170,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   } = post;
 
   // calling the route handler we just made and passing in the title of the post
-  const ogImage = `https://davidhtnguyen.com/api/og?title${title}`;
+  const ogImage = `https://davidngn.com/api/og?title${title}`;
 
   return {
     title,
@@ -190,7 +190,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 Observe how we are calling our Route Handler within the `generateMetadata` function above. We pass in the title of this article, which is then parsed by the Route Handler and rendered on top of the background image that was defined in the Route Handler.
 
-The [background image](https://davidhtnguyen.com/og-bg.png) I am using looks like this:
+The [background image](https://davidngn.com/og-bg.png) I am using looks like this:
 
 <Image
   alt={`The OG background image I'm using`}
@@ -199,7 +199,7 @@ The [background image](https://davidhtnguyen.com/og-bg.png) I am using looks lik
   height={1080 / 3}
 />
 
-And the resulting [dynamically generated OG image](https://davidhtnguyen.com/api/og?title=Optimizing%20SEO%20with%20Next.js%2013%27s%20Metadata%20API) looks like this:
+And the resulting [dynamically generated OG image](https://davidngn.com/api/og?title=Optimizing%20SEO%20with%20Next.js%2013%27s%20Metadata%20API) looks like this:
 
 <Image
   alt={`The resulting dynamically generated OG image`}
@@ -266,8 +266,8 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://davidhtnguyen.com/sitemap.xml",
-    host: "https://davidhtnguyen.com",
+    sitemap: "https://davidngn.com/sitemap.xml",
+    host: "https://davidngn.com",
   };
 }
 ```
@@ -289,12 +289,12 @@ For my portfilio site, I have the following `sitemap.ts` file, located in the sa
 
 export default async function sitemap() {
   const blogs = allBlogs.map((post) => ({
-    url: `https://davidhtnguyen.com/blog/${post.slug}`,
+    url: `https://davidngn.com/blog/${post.slug}`,
     lastModified: post.publishedAt,
   }));
 
   const routes = ["", "/projects", "/blog"].map((route) => ({
-    url: `https://davidhtnguyen.com${route}`,
+    url: `https://davidngn.com${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
@@ -412,10 +412,10 @@ export const metadata: Metadata = {
       "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API.",
     type: "article",
     publishedTime: "2023-05-20",
-    url: "https://davidhtnguyen.com/blog/nextjs13-seo",
+    url: "https://davidngn.com/blog/nextjs13-seo",
     images: [
       {
-        url: "https://davidhtnguyen.com/api/og?title=Optimizing SEO with Next.js 13's Metadata API",
+        url: "https://davidngn.com/api/og?title=Optimizing SEO with Next.js 13's Metadata API",
       },
     ],
   },
@@ -425,7 +425,7 @@ export const metadata: Metadata = {
     description:
       "A guide on how to optimize SEO with static and dynamic metatags using Next.js 13's new Metadata API.",
     images: [
-      "https://davidhtnguyen.com/api/og?title=Optimizing SEO with Next.js 13's Metadata API",
+      "https://davidngn.com/api/og?title=Optimizing SEO with Next.js 13's Metadata API",
     ],
   },
 };
