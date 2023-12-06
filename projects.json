@@ -5,7 +5,7 @@
     "content": "A blockchain-based platform that allows athletes to tokenize themselves and create fan-athlete economies.",
     "date": "Oct 2021 - Aug 2022",
     "image": "/projects/vo2.png",
-    "technologies": ["Next.js", "Express", "Web3.js", "MongoDB"],
+    "technologies": ["Next.js", "Express", "Web3", "MongoDB"],
     "link": "https://vo2.fans"
   },
   {
@@ -23,7 +23,7 @@
     "content": "Meta-NFT handshake collectible based on Ethereum that provides iconic handshakes from the web available to mint.",
     "date": "August 2021",
     "image": "/projects/dapper.png",
-    "technologies": ["Next.js", "MongoDB", "Web3/IPFS", "Polygon"],
+    "technologies": ["Next.js", "Web3", "Polygon", "MongoDB"],
     "link": "https://dappr-fs.vercel.app/"
   },
   {
@@ -50,7 +50,7 @@
     "content": "Created to assist with unsystematic virtual college classes.",
     "date": "March 2020 — Present",
     "image": "",
-    "technologies": ["React Native", "Expo", "MongoDB/Prisma", "Passport.js"],
+    "technologies": ["React Native", "Expo", "MongoDB"],
     "link": "https://gitfront.io/r/user-8084922/a741b03593c74670bbae13cb010e4a3f8f8b3b59/Elevate/"
   },
   {

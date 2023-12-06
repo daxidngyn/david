@@ -25,16 +25,16 @@ export const ProjectCard = ({ data }: { data: ProjectData }) => {
           ))}
         </div>
 
-        <div className="relative mt-6 h-48 w-full rounded-xl shadow-2xl lg:hidden">
+        <div className="relative mt-4 h-48 w-full rounded-xl shadow lg:hidden">
           <Image
             src={data.image}
             alt={data.title}
             fill
-            className="rounded-2xl object-cover object-top"
+            className="rounded-xl object-cover object-top"
           />
         </div>
 
-        <div className="mt-4 lg:mt-6">
+        <div className="mt-6 lg:mt-6">
           <span className="leading-6">{data.subtitle}</span>
           <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
             {data.content}

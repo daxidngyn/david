@@ -60,7 +60,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="bg-white text-black dark:bg-[#0d121d] dark:text-white">
             <Header />
-            <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-4 px-4 md:mt-12 md:flex-row md:px-8">
+            <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-4 px-4 md:mt-12 md:flex-row md:px-8">
               <Sidebar />
               <div className="mt-4 flex-1 pb-6 md:mt-0">{children}</div>
             </div>
