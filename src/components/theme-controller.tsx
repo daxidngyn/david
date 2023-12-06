@@ -90,7 +90,7 @@ export default function ThemeController() {
             <span
               className={cx(
                 "text-sm tracking-wide",
-                theme === "dark" && "text-sky-600",
+                theme === "dark" && "text-sky-400",
               )}
             >
               Dark
