@@ -48,7 +48,7 @@ export default async function BlogPost({ params }) {
   if (!post) notFound();
 
   return (
-    <section>
+    <section className='overflow-hidden'>
       <script
         type="application/ld+json"
         suppressHydrationWarning
