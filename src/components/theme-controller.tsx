@@ -42,7 +42,7 @@ export default function ThemeController() {
       onSelectionChange={(selected) => setTheme(selected as string)}
       className="flex flex-col"
     >
-      <Button className="outline-none">
+      <Button className="outline-none" aria-label="Color theme switcher">
         <ThemeIconMapper />
       </Button>
       <Popover
