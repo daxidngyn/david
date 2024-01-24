@@ -49,7 +49,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-y-1.5 md:mt-4">
+      <div className="mt-6 flex flex-col gap-y-2 md:mt-4 md:gap-y-1.5">
         {socials.map((social) => (
           <div key={social.name} className="flex items-center gap-x-2.5">
             <social.icon className="h-4 w-4 text-gray-700 dark:text-gray-300" />
