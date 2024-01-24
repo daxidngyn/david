@@ -9,7 +9,7 @@ export default function Header() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-4">
           <Image
-            src="/apple-touch-icon.png"
+            src="/icon.png"
             width={32}
             height={32}
             alt="David Nguyen logo"
