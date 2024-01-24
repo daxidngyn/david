@@ -27,7 +27,10 @@ export default function Nav() {
   const pathname = usePathname();
 
   const isCurrentPath = (href: string) => {
-    return (pathname.includes(href) && pathname === "/") || pathname === href;
+    return (
+      (href === "/" && pathname === "/") ||
+      (pathname.startsWith(href) && href !== "/")
+    );
   };
 
   return (
