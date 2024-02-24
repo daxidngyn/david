@@ -9,12 +9,21 @@
     "link": "https://vo2.fans"
   },
   {
+    "title": "RetailGo",
+    "subtitle": "Streamline Sales & Inventory Management",
+    "content": "A point-of-sale and inventory management solution designed to give businesses end-to-end control over their internal operations.",
+    "date": "Oct 2024",
+    "images": ["/projects/retailgo.jpeg"],
+    "technologies": ["React", "Next.js", "Golang", "PostgreSQL"],
+    "link": "https://github.com/daxidngyn/RetailGo"
+  },
+  {
     "title": "WordleMon",
     "subtitle": "Gotta Guess 'Em All!",
     "content": "A Wordle-like game that allows users to guess a daily randomly generated Pokemon.",
     "date": "Feb 2023",
     "image": "/projects/wordlemon.png",
-    "technologies": ["Next.js"],
+    "technologies": ["React", "Next.js"],
     "link": "https://wordlemon.com"
   },
   {
