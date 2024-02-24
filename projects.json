@@ -13,7 +13,7 @@
     "subtitle": "Streamline Sales & Inventory Management",
     "content": "A point-of-sale and inventory management solution designed to give businesses end-to-end control over their internal operations.",
     "date": "Oct 2024",
-    "images": ["/projects/retailgo.jpeg"],
+    "image": "/projects/retailgo.jpeg",
     "technologies": ["React", "Next.js", "Golang", "PostgreSQL"],
     "link": "https://github.com/daxidngyn/RetailGo"
   },
